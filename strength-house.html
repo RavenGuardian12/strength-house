@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Strength House — Private personal training with Dakota Moore in Lee's Summit, MO. 1-on-1 coaching, custom programming, and real results. Book your first session today.">
+<title>Strength House | Personal Training — Lee's Summit, MO</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080808;
+    --dark: #0f0f0f;
+    --card: #141414;
+    --border: #1f1f1f;
+    --blue: #2563eb;
+    --blue-light: #3b82f6;
+    --blue-glow: rgba(37,99,235,0.15);
+    --white: #f4f4f2;
+    --gray: #777;
+    --light-gray: #b0b0b0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 60px;
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: padding 0.3s;
+  }
+
+  nav.scrolled { padding: 14px 60px; }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; letter-spacing: 3px;
+    color: var(--white); text-decoration: none;
+  }
+
+  .nav-logo em { color: var(--blue-light); font-style: normal; }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gray); text-decoration: none; transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-book {
+    background: var(--blue) !important; color: var(--white) !important;
+    padding: 9px 22px !important; transition: background 0.2s !important;
+  }
+
+  .nav-book:hover { background: var(--blue-light) !important; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh; display: flex; align-items: flex-end;
+    position: relative; overflow: hidden; padding: 0 60px 80px;
+  }
+
+  .hero-photo {
+    position: absolute; inset: 0;
+    background: url('IMG_6796.jpeg') center top / cover no-repeat;
+    filter: grayscale(20%) contrast(1.05);
+  }
+
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to right, rgba(8,8,8,0.96) 42%, rgba(8,8,8,0.2) 100%),
+      linear-gradient(to top, rgba(8,8,8,1) 0%, transparent 60%);
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 660px; }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase;
+    color: var(--blue-light); margin-bottom: 20px;
+    opacity: 0; animation: fadeUp 0.7s 0.1s ease forwards;
+  }
+
+  .hero-tag::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--blue-light);
+  }
+
+  .hero-h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(70px, 11vw, 130px);
+    line-height: 0.88; letter-spacing: 2px; margin-bottom: 24px;
+    opacity: 0; animation: fadeUp 0.7s 0.25s ease forwards;
+  }
+
+  .hero-h1 em { color: var(--blue-light); font-style: normal; display: block; }
+
+  .hero-sub {
+    font-size: 16px; line-height: 1.75; color: var(--light-gray);
+    max-width: 440px; margin-bottom: 40px;
+    opacity: 0; animation: fadeUp 0.7s 0.4s ease forwards;
+  }
+
+  .hero-btns {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s 0.55s ease forwards;
+  }
+
+  .btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+    padding: 15px 32px; text-decoration: none; display: inline-block;
+    transition: all 0.2s; cursor: pointer; border: none;
+  }
+
+  .btn-solid { background: var(--blue); color: var(--white); }
+  .btn-solid:hover { background: var(--blue-light); transform: translateY(-2px); }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.15); color: var(--white); }
+  .btn-ghost:hover { border-color: var(--blue-light); color: var(--blue-light); transform: translateY(-2px); }
+
+  .hero-numbers {
+    position: absolute; right: 60px; bottom: 80px; z-index: 2;
+    display: flex; gap: 48px;
+    opacity: 0; animation: fadeUp 0.7s 0.7s ease forwards;
+  }
+
+  .hero-num-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px; color: var(--blue-light); line-height: 1;
+  }
+
+  .hero-num-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); margin-top: 4px;
+  }
+
+  /* ── SECTIONS ── */
+  .section { padding: 110px 60px; }
+  .section-inner { max-width: 1160px; margin: 0 auto; }
+
+  .label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--blue-light); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .label::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--blue); }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(44px, 6vw, 76px);
+    letter-spacing: 2px; line-height: 0.95; margin-bottom: 20px;
+  }
+
+  .divider { width: 40px; height: 2px; background: var(--blue); margin-bottom: 28px; }
+
+  /* ── ABOUT ── */
+  #about { background: var(--dark); border-top: 1px solid var(--border); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 480px 1fr;
+    gap: 80px; align-items: center;
+  }
+
+  .about-img {
+    position: relative;
+  }
+
+  .about-img img {
+    width: 100%; height: 580px;
+    object-fit: cover; object-position: top;
+    display: block; filter: grayscale(10%);
+  }
+
+  .about-img-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    width: 110px; height: 110px;
+    background: var(--blue);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+
+  .badge-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px; line-height: 1; color: var(--white);
+  }
+
+  .badge-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.8); text-align: center; line-height: 1.3; margin-top: 2px;
+  }
+
+  .about-body p {
+    font-size: 15px; line-height: 1.85; color: var(--light-gray); margin-bottom: 18px;
+  }
+
+  .about-body p strong { color: var(--white); font-weight: 500; }
+
+  .certs {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; margin-bottom: 28px;
+  }
+
+  .cert {
+    background: var(--card); border: 1px solid var(--border);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gray); padding: 6px 14px;
+  }
+
+  .about-social { display: flex; gap: 16px; margin-top: 8px; }
+
+  .social-link {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--blue-light); text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .social-link:hover { color: var(--white); }
+
+  /* ── SERVICES ── */
+  #services { background: var(--black); }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border); margin-top: 48px;
+  }
+
+  .svc {
+    background: var(--card); padding: 40px 32px;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .svc::after {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 0; height: 3px;
+    background: var(--blue-light); transition: width 0.4s ease;
+  }
+
+  .svc:hover::after { width: 100%; }
+  .svc:hover { background: #181818; }
+
+  .svc-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px; color: rgba(255,255,255,0.03);
+    line-height: 1; margin-bottom: 16px; user-select: none;
+  }
+
+  .svc-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+
+  .svc-desc {
+    font-size: 14px; line-height: 1.75; color: var(--gray); margin-bottom: 24px;
+  }
+
+  .svc-includes {
+    list-style: none; margin-bottom: 24px;
+  }
+
+  .svc-includes li {
+    font-size: 13px; color: var(--light-gray); padding: 5px 0;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .svc-includes li::before { content: '—'; color: var(--blue); font-size: 11px; }
+
+  .svc-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; color: var(--blue-light); letter-spacing: 1px;
+  }
+
+  .svc-price span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; color: var(--gray); letter-spacing: 1px; font-weight: 500;
+  }
+
+  .svc-popular {
+    position: absolute; top: 20px; right: 20px;
+    background: var(--blue);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--white); padding: 4px 10px;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rating-row {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 48px;
+  }
+
+  .stars { font-size: 20px; letter-spacing: 2px; }
+
+  .rating-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray);
+  }
+
+  .rating-text strong { color: var(--white); font-weight: 600; }
+
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--border);
+  }
+
+  .testi {
+    background: var(--card); padding: 36px 28px;
+    transition: background 0.3s;
+  }
+
+  .testi:hover { background: #181818; }
+
+  .testi-stars { font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
+
+  .testi-text {
+    font-size: 14px; line-height: 1.8; color: var(--light-gray);
+    margin-bottom: 24px; font-style: italic;
+  }
+
+  .testi-author {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .testi-avatar {
+    width: 40px; height: 40px;
+    background: var(--blue);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px; color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .testi-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--white);
+  }
+
+  .testi-tag {
+    font-size: 11px; color: var(--gray); margin-top: 2px;
+  }
+
+  /* ── MAP + CONTACT ── */
+  #contact { background: var(--black); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+
+  .contact-left p {
+    font-size: 15px; line-height: 1.75; color: var(--light-gray); margin-bottom: 36px;
+  }
+
+  .contact-items { display: flex; flex-direction: column; gap: 18px; margin-bottom: 36px; }
+
+  .contact-row {
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+
+  .c-icon {
+    width: 42px; height: 42px; background: var(--blue-glow);
+    border: 1px solid rgba(37,99,235,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+
+  .c-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 3px;
+  }
+
+  .c-val {
+    font-size: 14px; color: var(--light-gray); line-height: 1.5;
+  }
+
+  .c-val a { color: var(--blue-light); text-decoration: none; }
+  .c-val a:hover { color: var(--white); }
+
+  .map-embed {
+    width: 100%; height: 220px; border: 1px solid var(--border);
+    overflow: hidden; margin-top: 8px;
+  }
+
+  .map-embed iframe { width: 100%; height: 100%; border: none; filter: grayscale(80%) invert(85%) contrast(0.9); }
+
+  /* form */
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .fg { display: flex; flex-direction: column; gap: 6px; }
+
+  .fg label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray);
+  }
+
+  .fg input, .fg select, .fg textarea {
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--white); font-family: 'Barlow', sans-serif;
+    font-size: 14px; font-weight: 300; padding: 13px 16px;
+    outline: none; width: 100%; transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--blue); }
+  .fg input::placeholder, .fg textarea::placeholder { color: #444; }
+  .fg select option { background: var(--dark); }
+  .fg textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    background: var(--blue); color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+    padding: 16px; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .form-submit:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050505; border-top: 1px solid var(--border);
+    padding: 48px 60px;
+  }
+
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 36px; padding-bottom: 36px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 3px; color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .footer-logo em { color: var(--blue-light); font-style: normal; }
+
+  .footer-tagline {
+    font-size: 13px; color: var(--gray); max-width: 220px; line-height: 1.6;
+  }
+
+  .footer-links { display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); text-decoration: none; transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--blue-light); }
+
+  .footer-contact-col { font-size: 13px; color: var(--gray); line-height: 1.9; }
+  .footer-contact-col a { color: var(--blue-light); text-decoration: none; }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .footer-copy { font-size: 11px; color: #444; letter-spacing: 1px; }
+
+  .footer-ig {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); text-decoration: none; transition: color 0.2s;
+  }
+
+  .footer-ig:hover { color: var(--blue-light); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(22px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 960px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    #home { padding: 0 24px 60px; }
+    .section { padding: 72px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-img img { height: 380px; }
+    .about-img-badge { bottom: -14px; right: -8px; width: 90px; height: 90px; }
+    .badge-num { font-size: 28px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-numbers { position: static; margin-top: 40px; }
+    footer { padding: 36px 24px; }
+    .footer-top { flex-direction: column; gap: 28px; }
+    .footer-bottom { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">Strength<em>House</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-book">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Personal Training — Lee's Summit, MO</div>
+    <h1 class="hero-h1">Build Your <em>Strength.</em></h1>
+    <p class="hero-sub">No fluff, no shortcuts — just proven methods and real accountability.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-solid">Book a Session</a>
+      <a href="#services" class="btn btn-ghost">View Programs</a>
+    </div>
+  </div>
+  <div class="hero-numbers">
+    <div class="stat-item">
+      <div class="hero-num-val">150+</div>
+      <div class="hero-num-label">Clients Trained</div>
+    </div>
+    <div class="stat-item">
+      <div class="hero-num-val">6+</div>
+      <div class="hero-num-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="hero-num-val">5★</div>
+      <div class="hero-num-label">Google Rating</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="IMG_6797.jpeg" alt="Dakota Moore — Strength House" />
+        <div class="about-img-badge">
+          <div class="badge-num">6+</div>
+          <div class="badge-text">Years Coaching</div>
+        </div>
+      </div>
+      <div class="about-body reveal">
+        <div class="label">About Dakota</div>
+        <h2>Trained Hard.<br>Coached Right.</h2>
+        <div class="divider"></div>
+        <p>
+          <strong>Dakota Moore</strong> built Strength House from the ground up — not to be another gym, but to be the training experience he wished existed. A private, distraction-free space where every session is intentional and every client actually gets results.
+        </p>
+        <p>
+          With over 6 years of coaching experience and 150+ clients transformed, Dakota specializes in strength training, body composition, and building sustainable habits that last. His approach is direct, science-backed, and built around you — not a template.
+        </p>
+        <p>
+          Whether you're picking up a barbell for the first time or chasing a new personal record, Dakota will meet you exactly where you are and take you further than you expected.
+        </p>
+        <div class="certs">
+          <span class="cert">NASM Certified PT</span>
+          <span class="cert">Strength & Conditioning</span>
+          <span class="cert">Nutrition Coaching</span>
+          <span class="cert">Corrective Exercise</span>
+          <span class="cert">CPR / AED Certified</span>
+        </div>
+        <div class="about-social">
+          <a href="https://instagram.com/strengthhousekc" class="social-link" target="_blank">
+            ↗ Instagram
+          </a>
+          <a href="#contact" class="social-link">↓ Book a Session</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="label">Programs</div>
+      <h2>What We Offer</h2>
+    </div>
+    <div class="services-grid reveal">
+
+      <div class="svc">
+        <div class="svc-num">01</div>
+        <div class="svc-name">1-on-1 Personal Training</div>
+        <p class="svc-desc">The full experience. Every session is built around you — your goals, your body, your pace. Full attention from Dakota, start to finish.</p>
+        <ul class="svc-includes">
+          <li>Custom session programming</li>
+          <li>Full coaching & form correction</li>
+          <li>Progress tracking every session</li>
+          <li>Flexible scheduling</li>
+        </ul>
+        <div class="svc-price">$75 <span>/ session</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-popular">Most Popular</div>
+        <div class="svc-num">02</div>
+        <div class="svc-name">Monthly Coaching Package</div>
+        <p class="svc-desc">Commit to the process. 12 sessions per month plus programming, nutrition guidance, and weekly check-ins — everything you need in one package.</p>
+        <ul class="svc-includes">
+          <li>12 sessions / month (3x/week)</li>
+          <li>Custom nutrition plan</li>
+          <li>Weekly progress check-ins</li>
+          <li>Direct access to Dakota</li>
+        </ul>
+        <div class="svc-price">$599 <span>/ month</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-num">03</div>
+        <div class="svc-name">Online Coaching</div>
+        <p class="svc-desc">Can't make it in person? Get the same quality programming and accountability remotely. Ideal for people who travel or prefer to train on their own time.</p>
+        <ul class="svc-includes">
+          <li>Custom weekly program</li>
+          <li>Nutrition & macro guidance</li>
+          <li>Bi-weekly video check-ins</li>
+          <li>Form review via video</li>
+        </ul>
+        <div class="svc-price">$199 <span>/ month</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="label">Client Results</div>
+      <h2>Real People.<br>Real Results.</h2>
+      <div class="divider"></div>
+      <div class="rating-row">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text"><strong>5.0</strong> — 47 Google Reviews</span>
+      </div>
+    </div>
+    <div class="testi-grid reveal">
+
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I've tried three different gyms and nothing stuck. Dakota figured out what was holding me back in the first session. Lost 22 lbs in 4 months and I actually look forward to training now."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JR</div>
+          <div>
+            <div class="testi-name">Jake R.</div>
+            <div class="testi-tag">Fat Loss · 4 months</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The private gym setup is a game changer. No waiting, no distractions. Dakota pushes you hard but always knows when to back off. My deadlift went from 185 to 315 in six months."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MS</div>
+          <div>
+            <div class="testi-name">Marcus S.</div>
+            <div class="testi-tag">Strength · 6 months</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I was completely new to lifting and intimidated by regular gyms. Strength House felt safe and focused. Dakota is patient, knowledgeable, and genuinely invested in your progress."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AL</div>
+          <div>
+            <div class="testi-name">Ashley L.</div>
+            <div class="testi-tag">Beginner Program · 3 months</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Online coaching has been better than I expected. The programming is legit and Dakota actually watches my form videos and gives detailed feedback. Worth every penny."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">TW</div>
+          <div>
+            <div class="testi-name">Tyler W.</div>
+            <div class="testi-tag">Online Coaching · 5 months</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Dakota doesn't just train you — he educates you. I understand why I'm doing each exercise now, which makes the whole thing more effective. Down 18 lbs and feel stronger than I ever have."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">KM</div>
+          <div>
+            <div class="testi-name">Kayla M.</div>
+            <div class="testi-tag">Body Composition · 5 months</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Best investment I've made in myself. The monthly package is exactly what I needed — structure, accountability, and results. I've referred three people already."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">DB</div>
+          <div>
+            <div class="testi-name">Derek B.</div>
+            <div class="testi-tag">Monthly Package · 8 months</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <div class="label">Book a Session</div>
+        <h2>Let's Get<br>To Work.</h2>
+        <div class="divider"></div>
+        <p>Fill out the form and Dakota will be in touch within 24 hours to get you scheduled. First session is a full assessment — no commitment required.</p>
+
+        <div class="contact-items">
+          <div class="contact-row">
+            <div class="c-icon">📍</div>
+            <div>
+              <div class="c-label">Location</div>
+              <div class="c-val">481 SW Market St, Lee's Summit, MO 64081</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="c-icon">📞</div>
+            <div>
+              <div class="c-label">Phone</div>
+              <div class="c-val"><a href="tel:+18165550192">(816) 555-0192</a></div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="c-icon">✉️</div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-val"><a href="mailto:dakota@strengthhousekc.com">dakota@strengthhousekc.com</a></div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="c-icon">📸</div>
+            <div>
+              <div class="c-label">Instagram</div>
+              <div class="c-val"><a href="https://instagram.com/strengthhousekc" target="_blank">@strengthhousekc</a></div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="c-icon">🕐</div>
+            <div>
+              <div class="c-label">Hours</div>
+              <div class="c-val">Mon–Fri: 6am – 7pm<br>Sat: 8am – 2pm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.123456789!2d-94.382!3d38.910!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0f1234567890%3A0xabcdef1234567890!2s481+SW+Market+St%2C+Lee%27s+Summit%2C+MO+64081!5e0!3m2!1sen!2sus!4v1234567890"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="fg">
+              <label>First Name</label>
+              <input type="text" placeholder="John">
+            </div>
+            <div class="fg">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith">
+            </div>
+          </div>
+          <div class="fg">
+            <label>Email</label>
+            <input type="email" placeholder="john@email.com">
+          </div>
+          <div class="fg">
+            <label>Phone</label>
+            <input type="tel" placeholder="(816) 000-0000">
+          </div>
+          <div class="fg">
+            <label>Program Interest</label>
+            <select>
+              <option value="" disabled selected>Select a program</option>
+              <option>1-on-1 Personal Training ($75/session)</option>
+              <option>Monthly Coaching Package ($599/mo)</option>
+              <option>Online Coaching ($199/mo)</option>
+              <option>Not sure yet — let's talk</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Your Goals</label>
+            <textarea placeholder="Tell Dakota what you're working toward..."></textarea>
+          </div>
+          <button class="form-submit" onclick="this.textContent='Message Sent ✓'; this.style.background='#16a34a';">
+            Send Message →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Strength<em>House</em></div>
+      <div class="footer-tagline">Private personal training built for people serious about results.</div>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Client Results</a>
+      <a href="#contact">Book a Session</a>
+    </div>
+    <div class="footer-contact-col">
+      481 SW Market St<br>
+      Lee's Summit, MO 64081<br>
+      <a href="tel:+18165550192">(816) 555-0192</a><br>
+      <a href="mailto:dakota@strengthhousekc.com">dakota@strengthhousekc.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Strength House — Dakota Moore. All rights reserved.</div>
+    <a href="https://instagram.com/strengthhousekc" class="footer-ig" target="_blank">↗ @strengthhousekc</a>
+  </div>
+</footer>
+
+<script>
+  // Nav shrink on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 100);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
